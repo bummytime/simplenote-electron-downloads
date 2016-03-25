@@ -54,7 +54,7 @@ const App = React.createClass({
 	},
 
 	queueDataFetch: function() {
-		setTimeout( this.fetchDownloadCounts, 10000 );
+		setTimeout( this.fetchDownloadCounts, 30000 );
 	},
 
 	render: function() {
