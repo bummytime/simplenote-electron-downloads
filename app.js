@@ -42,22 +42,30 @@ const App = React.createClass({
 	},
 
 	componentDidMount: function() {
+		this.fetchDownloadCounts();
+	},
+
+	fetchDownloadCounts: function() {
 		this.serverRequest = $.get( apiEndpoint, function( result ) {
 	      this.setState( {
 	        apiData: result[ 0 ][ 'assets' ]
-	      } );
+	      }, this.queueDataFetch );
 	    }.bind( this ) );
+	},
+
+	queueDataFetch: function() {
+		setTimeout( this.fetchDownloadCounts, 10000 );
 	},
 
 	render: function() {
 		return (
-			<div className="app">	
+			<div className="app">
 				<img className="simplenote-logo" src="images/icon.png" />
 				<div className="greetz">Download Counts</div>
 				<div className="simplenote-apps">
-					{this.state.apiData.map( appData => {
+					{this.state.apiData.map( ( appData, key ) => {
 						return (
-							<SimplenoteDownload appData={ appData } />
+							<SimplenoteDownload appData={ appData } key={ key } />
 						);
 					} )}
 				</div>
