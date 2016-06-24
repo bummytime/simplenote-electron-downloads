@@ -37,7 +37,8 @@ const App = React.createClass({
 
 	getInitialState: function() {
 		return {
-			apiData: []
+			apiData: [],
+			versionName: ''
 		}
 	},
 
@@ -48,7 +49,8 @@ const App = React.createClass({
 	fetchDownloadCounts: function() {
 		this.serverRequest = $.get( apiEndpoint, function( result ) {
 	      this.setState( {
-	        apiData: result[ 0 ][ 'assets' ]
+	        apiData: result[ 0 ][ 'assets' ],
+	        versionName: result[ 0 ].name
 	      }, this.queueDataFetch );
 	    }.bind( this ) );
 	},
@@ -62,6 +64,7 @@ const App = React.createClass({
 			<div className="app">
 				<img className="simplenote-logo" src="images/icon.png" />
 				<div className="greetz">Download Counts</div>
+				<div className="version-name">{ this.state.versionName }</div>
 				<div className="simplenote-apps">
 					{this.state.apiData.map( ( appData, key ) => {
 						return (
