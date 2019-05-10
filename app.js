@@ -13,12 +13,12 @@ const SimplenoteDownload = React.createClass( {
 	render: function() {
 		const { name } = this.props.appData;
 		var platform;
-		if ( name.indexOf( 'win' ) > -1 ) {
-			platform = 'windows';
+		if ( name.indexOf( 'mac' ) > -1 ) {
+			platform = 'osx';
 		} else if ( name.indexOf( 'linux' ) > -1 ) {
 			platform = 'linux';
 		} else {
-			platform = 'osx';
+			platform = 'windows';
 		}
 
 		const imageSrc = `images/${platform}.png`;
