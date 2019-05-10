@@ -13,9 +13,9 @@ const SimplenoteDownload = React.createClass( {
 	render: function() {
 		const { name } = this.props.appData;
 		var platform;
-		if ( name.indexOf( 'exe' ) > -1 ) {
+		if ( name.indexOf( 'win' ) > -1 ) {
 			platform = 'windows';
-		} else if ( name.indexOf( 'deb' ) > -1 || name.indexOf( 'tar' ) > -1 ) {
+		} else if ( name.indexOf( 'linux' ) > -1 ) {
 			platform = 'linux';
 		} else {
 			platform = 'osx';
