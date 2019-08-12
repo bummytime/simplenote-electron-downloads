@@ -56,7 +56,7 @@ const App = React.createClass({
 	        currentApiData: result[ 0 ][ 'assets' ],
 	        currentVersionName: result[ 0 ].name,
 	        previousApiData: result[ 1 ][ 'assets' ],
-	        previousVersionName: result[ 1 ].name
+	        previousVersionName: result[ 1 ].name,
 	        previouspreviousApiData: result[ 2 ][ 'assets' ],
 	        previouspreviousVersionName: result[ 2 ].name
 	      }, this.queueDataFetch );
