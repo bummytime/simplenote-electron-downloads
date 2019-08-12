@@ -37,8 +37,12 @@ const App = React.createClass({
 
 	getInitialState: function() {
 		return {
-			apiData: [],
-			versionName: ''
+			currentApiData: [],
+			currentVersionName: '',
+			previousApiData: [],
+			previousVersionName: '',
+			previouspreviousApiData: [],
+			previouspreviousVersionName: ''
 		}
 	},
 
@@ -49,8 +53,12 @@ const App = React.createClass({
 	fetchDownloadCounts: function() {
 		this.serverRequest = $.get( apiEndpoint, function( result ) {
 	      this.setState( {
-	        apiData: result[ 0 ][ 'assets' ],
-	        versionName: result[ 0 ].name
+	        currentApiData: result[ 0 ][ 'assets' ],
+	        currentVersionName: result[ 0 ].name,
+	        previousApiData: result[ 1 ][ 'assets' ],
+	        previousVersionName: result[ 1 ].name
+	        previouspreviousApiData: result[ 2 ][ 'assets' ],
+	        previouspreviousVersionName: result[ 2 ].name
 	      }, this.queueDataFetch );
 	    }.bind( this ) );
 	},
@@ -64,9 +72,27 @@ const App = React.createClass({
 			<div className="app">
 				<img className="simplenote-logo" src="images/icon.png" />
 				<div className="greetz">Download Counts</div>
-				<div className="version-name">{ this.state.versionName }</div>
+				<div className="version-name">{ this.state.currentVersionName }</div>
 				<div className="simplenote-apps">
-					{this.state.apiData.map( ( appData, key ) => {
+					{this.state.currentApiData.map( ( appData, key ) => {
+						return (
+							<SimplenoteDownload appData={ appData } key={ key } />
+						);
+					} )}
+				</div>
+				<hr />
+				<div className="version-name">{ this.state.previousVersionName }</div>
+				<div className="simplenote-apps">
+					{this.state.previousApiData.map( ( appData, key ) => {
+						return (
+							<SimplenoteDownload appData={ appData } key={ key } />
+						);
+					} )}
+				</div>
+				<hr />
+				<div className="version-name">{ this.state.previouspreviousVersionName }</div>
+				<div className="simplenote-apps">
+					{this.state.previouspreviousApiData.map( ( appData, key ) => {
 						return (
 							<SimplenoteDownload appData={ appData } key={ key } />
 						);
