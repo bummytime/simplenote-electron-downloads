@@ -80,7 +80,7 @@ const App = React.createClass({
 						);
 					} )}
 				</div>
-				<hr />
+				<div className="striped-border">
 				<div className="version-name">{ this.state.previousVersionName }</div>
 				<div className="simplenote-apps">
 					{this.state.previousApiData.map( ( appData, key ) => {
@@ -89,7 +89,7 @@ const App = React.createClass({
 						);
 					} )}
 				</div>
-				<hr />
+				<div className="striped-border">
 				<div className="version-name">{ this.state.previouspreviousVersionName }</div>
 				<div className="simplenote-apps">
 					{this.state.previouspreviousApiData.map( ( appData, key ) => {
